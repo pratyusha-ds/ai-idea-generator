@@ -12,7 +12,7 @@ export default function VerifyPage() {
           activate your account.
         </p>
         <p className="text-sm text-gray-400 mt-4">
-          After confirming, you'll be redirected to the login page.
+          After confirming, you will be redirected to the login page.
         </p>
       </div>
     </main>
