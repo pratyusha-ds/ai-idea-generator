@@ -8,8 +8,8 @@ export default function VerifyPage() {
           Check your email
         </h1>
         <p className="text-gray-600">
-          We’ve sent a verification link to your inbox. Click it to activate
-          your account.
+          We&apos;ve sent a verification link to your inbox. Click it to
+          activate your account.
         </p>
         <p className="text-sm text-gray-400 mt-4">
           After confirming, you'll be redirected to the login page.
