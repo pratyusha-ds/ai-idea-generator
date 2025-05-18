@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Idea Generator
 
-## Getting Started
+A simple practice project to generate creative project ideas using AI.
 
-First, run the development server:
+## Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+You can see the live version of this project deployed on Vercel here:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[https://ai-idea-generator-psi.vercel.app/](https://ai-idea-generator-psi.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project integrates the following web development technologies:
 
-## Learn More
+- **Next.js**
+- **Supabase**
+- **Gemini AI**
+- **Shadcn UI**
+- **Tailwind CSS**
 
-To learn more about Next.js, take a look at the following resources:
+The core functionality of this project is to register and allow logged-in users to trigger the Gemini AI model to generate novel project ideas based on a prompt.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Getting Started (for local development)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  **Clone the repository:**
 
-## Deploy on Vercel
+    ```bash
+    git clone https://github.com/pratyusha-ds/ai-idea-generator
+    cd idea-generator
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2.  **Install dependencies:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
+
+3.  **Set up environment variables:**
+    Create a `.env.local` file in the root of your project and add your Supabase and Gemini AI API keys:
+
+    ```env
+    NEXT_PUBLIC_SUPABASE_URL=YOUR_SUPABASE_URL
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+    GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+    ```
+
+    - You can find your Supabase URL and Anon Key in your Supabase project settings.
+    - You'll need to obtain a Gemini AI API key from the Google AI Studio.
+
+4.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    ```
+
+    Open your browser and navigate to `http://localhost:3000`.

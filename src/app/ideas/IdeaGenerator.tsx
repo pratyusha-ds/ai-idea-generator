@@ -89,7 +89,7 @@ export default function IdeaGenerator() {
         </Button>
       </div>
 
-      <Card className="w-full max-w-3xl shadow-2xl border border-gray-300 rounded-2xl">
+      <Card className="w-full max-w-3xl shadow-2xl border border-gray-300 rounded-2xl pt-25 sm:pt-10">
         <CardHeader>
           <CardTitle className="text-4xl font-bold text-center text-green-800">
             AI Project Idea Generator
