@@ -1,21 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export default function LoginPage() {
+function LoginContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [verificationMessage, setVerificationMessage] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
   const [hasJustVerified, setHasJustVerified] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const error = searchParams.get("error");
@@ -102,11 +102,13 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             className="text-lg py-3"
           />
+
           {errorMsg && (
             <p className="text-red-600 text-sm mt-1 font-semibold">
               {errorMsg}
             </p>
           )}
+
           <Button
             onClick={handleLogin}
             disabled={loading}
@@ -127,5 +129,13 @@ export default function LoginPage() {
         </p>
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginContent />
+    </Suspense>
   );
 }
