@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,19 +14,45 @@ export default function RegisterPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    const checkSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        router.push("/ideas");
+      }
+    };
+
+    checkSession();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session) {
+        router.push("/ideas");
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [router]);
   const handleRegister = async () => {
     setLoading(true);
     setErrorMsg("");
-    const { error } = await supabase.auth.signUp({
+
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         emailRedirectTo: `${window.location.origin}/login`,
       },
     });
+
     setLoading(false);
 
-    if (error) {
+    if (data?.user && Object.keys(data.user.user_metadata).length === 0) {
+      setErrorMsg("This email is already registered. Please log in instead.");
+    } else if (error) {
       setErrorMsg(error.message);
     } else {
       router.push("/verify");
